@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skybrud.Integrations.AffaldPlus", "Skybrud.Integrations.AffaldPlus\Skybrud.Integrations.AffaldPlus.csproj", "{43D20CA6-74F3-453F-8730-6855B24180CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{AAD06E9C-E8B2-4DE9-BB5D-58BA1A1BCD80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43D20CA6-74F3-453F-8730-6855B24180CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D20CA6-74F3-453F-8730-6855B24180CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D20CA6-74F3-453F-8730-6855B24180CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D20CA6-74F3-453F-8730-6855B24180CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAD06E9C-E8B2-4DE9-BB5D-58BA1A1BCD80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD06E9C-E8B2-4DE9-BB5D-58BA1A1BCD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD06E9C-E8B2-4DE9-BB5D-58BA1A1BCD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD06E9C-E8B2-4DE9-BB5D-58BA1A1BCD80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96D35F7E-BC93-495B-9C42-0FF2B298095D}
+	EndGlobalSection
+EndGlobal

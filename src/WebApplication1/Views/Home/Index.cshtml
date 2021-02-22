@@ -1,0 +1,156 @@
+﻿@using System.Text
+@using System.Xml
+@using System.Xml.Linq
+@using Newtonsoft.Json.Linq
+@using Skybrud.Essentials.Xml.Extensions
+@using Skybrud.Integrations.AffaldPlus
+
+<style>
+    h3 {
+        margin: 0;
+        font-size: 14px;
+    }
+    pre {
+        font-size: 11px;
+        line-height: 13px;
+    }
+</style>
+
+@{
+    Layout = null;
+
+    var affald = new AffaldPlusService();
+
+    //var hest = client.GetSuggestions(330, "af");
+
+
+
+    int municipalityId = 330;
+    string text = "af";
+
+    int suggestionId = 4719;
+
+    suggestionId = 4738; // afdækningsfilt
+
+    if (String.IsNullOrWhiteSpace(Request.QueryString["id"])) {
+
+        var response = affald.GetSuggestions(municipalityId, text);
+
+        <div>
+            @foreach (var item in response.Body.Items) {
+                <div>
+                    <a href="/Home/Index?id=@(item.Id)">@item.Id => @item.Name</a>
+                </div>
+            }
+        </div>
+
+    } else {
+        
+        int id = Int32.Parse(Request.QueryString["id"]);
+        
+        var response = affald.GetContent(municipalityId, id);
+
+        XElement body = XElement.Parse(response.Response.Body);
+
+        // Declare the namespaces used in the response body
+        XmlNamespaceManager nsmgr = new XmlNamespaceManager(new NameTable());
+        nsmgr.AddNamespace("SOAP-ENV", "http://schemas.xmlsoap.org/soap/envelope/");
+        nsmgr.AddNamespace("ns1", "urn:xmethods-delayed-quotes");
+
+        // Parse the inner XML body
+        var datapakke = body.GetElementValue("SOAP-ENV:Body/ns1:genXMLSoegeOrdResultResponse/GetDatapakke", nsmgr);//XElement.Parse(body.GetElementValue("SOAP-ENV:Body/ns1:genXMLSoegeOrdResultResponse/GetDatapakke", nsmgr));
+
+
+        datapakke = datapakke.Replace("<AfleveringsStedBody>", "<AfleveringsStedBody><![CDATA[");
+        datapakke = datapakke.Replace("</AfleveringsStedBody>", "]]></AfleveringsStedBody>");
+        
+        <h3>Datapakke</h3>
+        <pre>@datapakke</pre>
+
+        <h3>Datapakke 2</h3>
+        try {
+            string str = XElement.Parse(datapakke).ToString();
+            <pre>@str</pre>
+        } catch (Exception ex) {
+            <pre>@ex</pre>
+        }
+
+        <h3>Response body</h3>
+        <pre>@body</pre>
+
+        <div style="border: 2px solid #333; margin: 10px 0; padding: 5px;">
+            <p>Søgeord:</p>
+            <h3>@response.Body.Name</h3>
+            <p>kan afleveres:</p>
+            
+            @if (response.Body.HasHome) {
+                <h4>Hjemme:</h4>
+                <div style="margin-left: 10px;">
+                    <h3>@response.Body.Home.Header</h3>
+                    @response.Body.Home.Body
+                </div>
+            }
+            
+            @if (response.Body.HasRecyclingStation) {
+                <h4>@response.Body.RecyclingStation.Header:</h4>
+                <div style="margin-left: 10px;">
+                    <p>Til @response.Body.RecyclingStation.Body</p>
+                    @*@if (String.IsNullOrWhiteSpace(response.Body.RecyclingStation.Link) == false) {
+                        Uri uri = null;
+                        try {
+                            uri = new Uri(response.Body.RecyclingStation.Link);
+                        } catch (Exception) { }
+                        <p><a href="@response.Body.RecyclingStation.Link">Læs mere om @response.Body.RecyclingStation.Body@(uri == null ? "" : " på " + uri.Host)</a></p>
+                    }*@
+                </div>
+            }
+
+            @*@foreach (var location in response.Body.Locations) {
+                <h3>@location.Header</h3>
+                <p>@location.Body</p>
+                if (String.IsNullOrWhiteSpace(location.Link) == false) {
+                    <p><a href="@location.Link">Læs mere om XXX på YYYY</a></p>
+                }
+            }*@
+        </div>
+
+        <h3>JSON</h3>
+        <pre>@JObject.FromObject(response.Body)</pre>
+
+        <h3>Request body</h3>
+        <pre>@response.Response.Request</pre>
+
+    }
+
+
+    return;
+
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
