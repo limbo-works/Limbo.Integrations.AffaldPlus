@@ -2,12 +2,12 @@
 
 namespace Limbo.Integrations.AffaldPlus {
 
-    public class AffaldPlusService {
+    public class AffaldPlusHttpService {
 
-        public AffaldPlusClient Client { get; }
+        public AffaldPlusHttpClient Client { get; }
 
-        public AffaldPlusService() {
-            Client = new AffaldPlusClient();
+        public AffaldPlusHttpService() {
+            Client = new AffaldPlusHttpClient();
         }
 
         public AffaldPlusGetSuggestionsResponse GetSuggestions(int municipalityId, string text) {

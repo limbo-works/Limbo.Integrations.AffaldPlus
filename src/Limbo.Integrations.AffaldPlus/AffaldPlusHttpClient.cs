@@ -10,7 +10,7 @@ using Skybrud.Essentials.Http.Collections;
 
 namespace Limbo.Integrations.AffaldPlus {
 
-    public class AffaldPlusClient : HttpClient {
+    public class AffaldPlusHttpClient : HttpClient {
 
         public IHttpResponse GetSuggestions(int municipalityId, string text) {
             return DoSoapPostRequest("genXMLSoegeOrd", new HttpPostData {
