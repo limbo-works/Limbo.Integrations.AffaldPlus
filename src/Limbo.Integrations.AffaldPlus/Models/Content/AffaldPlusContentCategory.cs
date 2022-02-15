@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using Skybrud.Essentials.Xml;
 using Skybrud.Essentials.Xml.Extensions;
 
-namespace Skybrud.Integrations.AffaldPlus.Models.Content {
+namespace Limbo.Integrations.AffaldPlus.Models.Content {
 
     public class AffaldPlusContentCategory : XmlObjectBase {
 

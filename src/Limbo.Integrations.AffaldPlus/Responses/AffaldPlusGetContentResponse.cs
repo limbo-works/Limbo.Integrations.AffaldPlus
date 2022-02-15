@@ -1,10 +1,10 @@
 ﻿using System.Xml;
 using System.Xml.Linq;
+using Limbo.Integrations.AffaldPlus.Models.Content;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Xml.Extensions;
-using Skybrud.Integrations.AffaldPlus.Models.Content;
 
-namespace Skybrud.Integrations.AffaldPlus.Responses {
+namespace Limbo.Integrations.AffaldPlus.Responses {
 
     public class AffaldPlusGetContentResponse : AffaldPlusResponse<AffaldPlusContentResult> {
         

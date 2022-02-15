@@ -2,7 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Skybrud.Integrations.AffaldPlus.Models.Suggestions {
+namespace Limbo.Integrations.AffaldPlus.Models.Suggestions {
 
     public class AffaldPlusSuggestionList {
 

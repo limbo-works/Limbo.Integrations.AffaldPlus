@@ -8,7 +8,7 @@ using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Client;
 using Skybrud.Essentials.Http.Collections;
 
-namespace Skybrud.Integrations.AffaldPlus {
+namespace Limbo.Integrations.AffaldPlus {
 
     public class AffaldPlusClient : HttpClient {
 

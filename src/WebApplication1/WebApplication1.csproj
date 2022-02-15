@@ -212,9 +212,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Skybrud.Integrations.AffaldPlus\Skybrud.Integrations.AffaldPlus.csproj">
+    <ProjectReference Include="..\Limbo.Integrations.AffaldPlus\Limbo.Integrations.AffaldPlus.csproj">
       <Project>{43d20ca6-74f3-453f-8730-6855b24180ca}</Project>
-      <Name>Skybrud.Integrations.AffaldPlus</Name>
+      <Name>Limbo.Integrations.AffaldPlus</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

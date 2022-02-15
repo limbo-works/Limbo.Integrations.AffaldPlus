@@ -1,6 +1,6 @@
-﻿using Skybrud.Integrations.AffaldPlus.Responses;
+﻿using Limbo.Integrations.AffaldPlus.Responses;
 
-namespace Skybrud.Integrations.AffaldPlus {
+namespace Limbo.Integrations.AffaldPlus {
 
     public class AffaldPlusService {
 

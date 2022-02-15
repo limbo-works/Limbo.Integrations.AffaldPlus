@@ -1,6 +1,6 @@
 ﻿using Skybrud.Essentials.Http;
 
-namespace Skybrud.Integrations.AffaldPlus.Responses {
+namespace Limbo.Integrations.AffaldPlus.Responses {
 
     public class AffaldPlusResponse : HttpResponseBase {
 
